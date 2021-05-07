@@ -1,9 +1,20 @@
-/*--------------------------------------------------------------------------------------------------------------
- * Copyright (c) Microsoft Corporation. All rights reserved.
- * Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
- *-------------------------------------------------------------------------------------------------------------*/
+#![deny(unsafe_code)]
+#![no_main]
+#![no_std]
 
-fn main() {
-    let name = "VS Code Remote - Containers";
-    println!("Hello, {}!", name);
+extern crate cortex_m_rt as rt;
+extern crate panic_halt as panic;
+
+
+// use rt::entry;
+
+
+#[rt::entry]
+fn main() -> ! {
+    let _y;
+    let x = 42;
+    _y = x;
+
+    // infinite loop; just so we don't leave this stack frame
+    loop {}
 }

@@ -3,6 +3,18 @@ name = "hello_remote_world"
 version = "0.1.0"
 authors = ["VS Code <vscode@microsoft.com>"]
 
-[lib]
-path ="./src/lib/lib.rs"
+# [lib]
+# path ="./src/lib/lib.rs"
 
+[profile.release]
+debug = true
+
+# [dependencies]
+# aux5 = { path = "auxiliary" }
+
+[dependencies]
+cortex-m = "0.7.1"
+cortex-m-rt = "0.6.13"
+stm32f3-discovery = "0.6.0"
+panic-halt = "0.2.0"
+panic-itm = "0.4.2"

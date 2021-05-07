@@ -5,18 +5,27 @@
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
-	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+	"runArgs": [
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined",
+		"--device-cgroup-rule=c 189:* rmw"
+		// "-v /dev/stlinkv2_1:/dev/stlinkv2_1:ro"
+	],
+	"mounts": [
+		"type=bind,src=/dev/stlinkv2_1,dst=/dev/stlinkv2_1",
+		"type=bind,src=/dev/bus,dst=/dev/bus"
 
+	],
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash",
+	"settings": {
+		"terminal.integrated.defaultProfile.linux": "/bin/zsh",
 		"lldb.executable": "/usr/bin/lldb",
 		// VS Code don't watch files under ./target
 		"files.watcherExclude": {
 			"**/target/**": true
 		}
 	},
-
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"rust-lang.rust",
@@ -24,13 +33,10 @@
 		"vadimcn.vscode-lldb",
 		"mutantdino.resourcemonitor"
 	],
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "rustc --version",
-
 	// Comment out to run as root instead.
 	"remoteUser": "vscode"
 }
