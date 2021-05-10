@@ -27,6 +27,12 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 
 # [Optional] Uncomment this section to install additional packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends stlink-tools>
-
+    && apt-get -y install --no-install-recommends \
+    udev \
+    usbutils \
+    stlink-tools \
+    gdb-multiarch \
+    openocd \
+    qemu-system-arm
+RUN cargo install cargo-generate && rustup target add thumbv7m-none-eabi
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git /home/vscode/.fzf

@@ -15,7 +15,6 @@
 	"mounts": [
 		"type=bind,src=/dev/stlinkv2_1,dst=/dev/stlinkv2_1",
 		"type=bind,src=/dev/bus,dst=/dev/bus"
-
 	],
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
@@ -24,14 +23,15 @@
 		// VS Code don't watch files under ./target
 		"files.watcherExclude": {
 			"**/target/**": true
-		}
+		},
+		"cortex-debug.gdbPath": "/usr/bin/gdb-multiarch"
 	},
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"rust-lang.rust",
-		"bungcip.better-toml",
-		"vadimcn.vscode-lldb",
-		"mutantdino.resourcemonitor"
+		"tamasfe.even-better-tom",
+		"marus25.cortex-debug",
+		"mutantdino.resourcemonitor",
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
